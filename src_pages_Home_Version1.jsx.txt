@@ -1,0 +1,107 @@
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import logo from '../assets/logo.png';
+
+const Container = styled.div`
+  height: calc(100vh - 72px);
+  background: ${({ theme }) => theme.background};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Title = styled.h1`
+  margin-top: 24px;
+  font-size: 4rem;
+  background: ${({ theme }) => theme.gradient};
+  -webkit-background-clip: text; color: transparent;
+`;
+
+const Subtitle = styled.h2`
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: ${({ theme }) => theme.textDim};
+  font-weight: 300;
+`;
+
+const Buttons = styled.div`
+  display: flex; flex-direction: column;
+  gap: 1.25rem; align-items: center;
+  margin-bottom: 2.5rem;
+`;
+
+const Button = styled.button`
+  width: 260px;
+  padding: 1rem 2rem;
+  margin: 0.4rem 0;
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.button};
+  border: 2px solid ${({ theme }) => theme.accent};
+  border-radius: 40px;
+  box-shadow: 0 4px 24px ${({ theme }) => theme.accent}44;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  &:hover {
+    background: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.background};
+    transform: scale(1.05);
+  }
+`;
+
+const SearchContainer = styled.div`
+  display: flex; justify-content: center; align-items: center;
+  margin-top: 1.5rem;
+`;
+
+const SearchInput = styled.input`
+  padding: 0.8rem 1.5rem; border-radius: 30px;
+  border: none; font-size: 1.1rem; width: 300px;
+  margin-right: 1rem;
+  background: #131a26;
+  color: ${({ theme }) => theme.textDim};
+  outline: none;
+`;
+
+const LogoStyled = styled.img`
+  width: 110px; height: 110px; border-radius: 32px; margin-top: 1rem;
+  box-shadow: 0 0 32px ${({ theme }) => theme.accent}33;
+`;
+
+function Home() {
+  const navigate = useNavigate();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const q = e.target.elements.search.value.trim().toLowerCase();
+    if (q.includes("area")) return navigate('/area-perimeter');
+    if (q.includes("perimeter")) return navigate('/area-perimeter');
+    if (q.includes("property") || q.includes("properties") || q.includes("shapes")) return navigate('/properties');
+    if (q.includes("congruence") || q.includes("congruent")) return navigate('/congruence');
+    if (q.includes("similar")) return navigate('/similarity');
+    if (q.includes("coordinate") || q.includes("geometry")) return navigate('/coordinate-geometry');
+    if (q.includes("about") || q.includes("member")) return navigate('/about');
+  };
+  return (
+    <Container>
+      <LogoStyled src={logo} alt="Logo" />
+      <Title>Plan E-Geometry</Title>
+      <Subtitle>Exploring the World of Plane Geometry</Subtitle>
+      <Buttons>
+        <Button onClick={() => navigate('/area-perimeter')}>Area & Perimeter</Button>
+        <Button onClick={() => navigate('/properties')}>Properties of Shapes</Button>
+        <Button onClick={() => navigate('/congruence')}>Congruence</Button>
+        <Button onClick={() => navigate('/similarity')}>Similarity</Button>
+        <Button onClick={() => navigate('/coordinate-geometry')}>Coordinate Geometry</Button>
+        <Button onClick={() => navigate('/about')}>About the Members</Button>
+      </Buttons>
+      <SearchContainer>
+        <form onSubmit={handleSearch}>
+          <SearchInput name="search" placeholder="Search geometry topics..." />
+        </form>
+      </SearchContainer>
+      {/* You can add background decorative SVGs here for outlines */}
+    </Container>
+  );
+}
+export default Home;

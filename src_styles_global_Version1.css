@@ -1,0 +1,12 @@
+body {
+  background: #0B1120;
+  margin: 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  user-select: none;
+  overflow: hidden; /* Prevent vertical scroll */
+}
+#root {
+  height: 100vh;
+}
+::-webkit-scrollbar { display: none; }

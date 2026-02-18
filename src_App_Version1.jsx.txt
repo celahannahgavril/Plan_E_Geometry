@@ -1,0 +1,28 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar.jsx";
+import Home from "./pages/Home.jsx";
+import AreaPerimeter from "./pages/AreaPerimeter.jsx";
+import Properties from "./pages/Properties.jsx";
+import Congruence from "./pages/Congruence.jsx";
+import Similarity from "./pages/Similarity.jsx";
+import CoordinateGeometry from "./pages/CoordinateGeometry.jsx";
+import About from "./pages/About.jsx";
+
+function App() {
+  return (
+    <Router>
+      <NavigationBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/area-perimeter" element={<AreaPerimeter />} />
+        <Route path="/properties" element={<Properties />} />
+        <Route path="/congruence" element={<Congruence />} />
+        <Route path="/similarity" element={<Similarity />} />
+        <Route path="/coordinate-geometry" element={<CoordinateGeometry />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

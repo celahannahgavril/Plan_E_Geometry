@@ -1,0 +1,19 @@
+/* Imports ... */
+import PageWrapper from './PageWrapper';
+
+const shapeList = [
+  { name: "Square", formula: "A = s²", perimeter: "P = 4s", example: "If s=5, A=25, P=20" },
+  { name: "Rectangle", formula: "A = lw", perimeter: "P = 2(l + w)", example: "l=8,w=3, A=24,P=22" },
+  { name: "Circle", formula: "A = πr²", perimeter: "C = 2πr", example: "r=4, A=~50.27,C=~25.13" },
+  /* ... */
+];
+
+// ...use state to track selected/hovered shape
+
+return (
+  <PageWrapper>
+    {/* Layout grid for shapes/buttons */}
+    {/* On click: show formula; on hover: example */}
+    <BackToHomeButton />
+  </PageWrapper>
+)

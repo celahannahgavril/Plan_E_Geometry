@@ -1,0 +1,53 @@
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import logo from '../assets/logo.png';
+
+const Nav = styled.nav`
+  background: ${({ theme }) => theme.background};
+  box-shadow: 0 2px 16px #0A23426a;
+  padding: 0.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const NavList = styled.ul`
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+`;
+
+const StyledLink = styled(NavLink)`
+  color: ${({ theme }) => theme.text};
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 0; height: 2px;
+    background: ${({ theme }) => theme.accent};
+    transition: width .3s;
+  }
+  &:hover:after { width: 100%; }
+`;
+
+function NavigationBar() {
+  return (
+    <Nav>
+      <img src={logo} alt="Plan E-Geometry Logo" style={{height: "48px"}} />
+      <NavList>
+        <li><StyledLink to="/" end>Home</StyledLink></li>
+        <li><StyledLink to="/area-perimeter">Area & Perimeter</StyledLink></li>
+        <li><StyledLink to="/properties">Properties</StyledLink></li>
+        <li><StyledLink to="/congruence">Congruence</StyledLink></li>
+        <li><StyledLink to="/similarity">Similarity</StyledLink></li>
+        <li><StyledLink to="/coordinate-geometry">Coordinate Geometry</StyledLink></li>
+        <li><StyledLink to="/about">About the Members</StyledLink></li>
+      </NavList>
+    </Nav>
+  );
+}
+
+export default NavigationBar;
